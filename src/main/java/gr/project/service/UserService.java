@@ -2,8 +2,6 @@ package gr.project.service;
 
 import gr.project.model.User;
 import gr.project.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -19,32 +17,30 @@ public class UserService {
      * Function that returns User object based on the given email
      * @param email
      */
-    public ResponseEntity <User>findUserByEmail(String email) {
-        User user1 = userRepository.findUserByEmail(email);
-        return new ResponseEntity<User>(user1, HttpStatus.OK);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     /**
      * Function that returns User object based on the given ip address
      * @param ipAddress
      */
-    public ResponseEntity <User>findUserByIp(String ipAddress) {
-        User user2 = userRepository.findUserByIp(ipAddress);
-        return new ResponseEntity<User>(user2, HttpStatus.OK);
+    public User findByIp(String ipAddress) {
+       return userRepository.findByIpAddress(ipAddress);
     }
 
     /**
      * Function that returns  list of users
      */
-    public ResponseEntity<List<User>> findAll() {
-        return new ResponseEntity<List<User>>(userRepository.findAll(), HttpStatus.OK);
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     /**
      * * Function that posts a user object in the storage
      * @param user
      */
-    public ResponseEntity save(User user) {
-        return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 }
