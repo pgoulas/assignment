@@ -43,7 +43,7 @@ public class User implements Serializable {
 
     @NotNull
     @Size(max=15)
-    @Column(name = "ip_address")
+    @Column(name = "ipAddress")
     private String ipAddress;
 
 }
